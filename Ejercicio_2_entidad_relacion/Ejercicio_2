@@ -1,0 +1,98 @@
+CREATE DATABASE fabrica_cerveza;
+
+USE fabrica_cerveza;
+
+-- Creación de Tablas
+
+CREATE TABLE Materia_Prima(
+    id_materia_prima INT AUTO_INCREMENT NOT NULL UNIQUE,
+    nombre VARCHAR(100),
+    descripcion VARCHAR(100),
+    pais_origen VARCHAR(50),
+    PRIMARY KEY(id_materia_prima)
+);
+
+CREATE TABLE Categoria(
+    id_categoria INT AUTO_INCREMENT NOT NULL UNIQUE,
+    nombre VARCHAR(100),
+    PRIMARY KEY(id_categoria)
+);
+
+CREATE TABLE Cerveza(
+    id_cerveza INT AUTO_INCREMENT NOT NULL UNIQUE,
+    nombre VARCHAR(100),
+    color VARCHAR(30),
+    pais_origen VARCHAR(30),
+    grado_alcohol DECIMAL,
+    fecha_creacion DATE,
+    id_categoria INT,
+    PRIMARY KEY(id_cerveza),
+    FOREIGN KEY(id_categoria) REFERENCES Categoria(id_categoria)
+);
+
+CREATE TABLE Cerveza_Materia_Prima(
+    id_cerveza INT,
+    id_materia_prima INT,
+    PRIMARY KEY (id_cerveza, id_materia_prima),
+    FOREIGN KEY(id_cerveza) REFERENCES Cerveza(id_cerveza),
+    FOREIGN KEY(id_materia_prima) REFERENCES Materia_Prima(id_materia_prima)
+);
+
+CREATE TABLE Tipo(
+    id_tipo INT AUTO_INCREMENT NOT NULL UNIQUE,
+    nombre VARCHAR(100),
+    PRIMARY KEY(id_tipo)
+);
+
+CREATE TABLE Categoria_Tipo(
+    id_categoria INT,
+    id_tipo INT,
+    PRIMARY KEY(id_categoria, id_tipo),
+    FOREIGN KEY(id_categoria) REFERENCES Categoria(id_categoria),
+    FOREIGN KEY(id_tipo) REFERENCES Tipo(id_tipo)
+);
+
+-- Ingresar informacion a las tablas BD
+
+INSERT INTO Materia_Prima(nombre, descripcion, pais_origen) VALUES
+('especias', 'miel_jengibre', 'colombia'),
+('frutas', 'arandanos_cerezas', 'colombia'),
+('cereales', 'malta_de_cebada', 'colombia');
+
+INSERT INTO Categoria(nombre) VALUES
+('Lagers'),
+('Ales');
+
+INSERT INTO Cerveza(nombre, color, pais_origen, grado_alcohol, fecha_creacion, id_categoria) VALUES
+('club colombia', 'dorada', 'colombia', 4.5, '2020-04-26', 1),
+('Poker', 'negra', 'colombia', 4.5, '2021-04-26', 2),
+('Aguila', 'Dorado', 'colombia', 4.0, '2019-04-26', 1),
+('Redds', 'verde', 'colombia', 4.5, '2018-04-26', 2);
+
+INSERT INTO Tipo(nombre) VALUES
+('Dark'),
+('Pale'),
+('Bocks'),
+('Stouts'),
+('Porters'),
+('Belgians'),
+('Sours');
+
+
+-- Relaciones entre Categoría y Tipo
+INSERT INTO Categoria_Tipo(id_categoria, id_tipo) VALUES
+(1, 1), -- Lager - Dark
+(1, 2), -- Lager - Pale
+(2, 3), -- Ale - Bocks
+(2, 4), -- Ale - Stouts
+(2, 5), -- Ale - Porters
+(2, 6), -- Ale - Belgians
+(2, 7); -- Ale - Sours
+
+-- Relaciones entre Cerveza y Materia_Prima
+INSERT INTO Cerveza_Materia_Prima(id_cerveza, id_materia_prima) VALUES
+(1, 1), -- club colombia - especias
+(2, 2), -- Poker - frutas
+(3, 3), -- Aguila - cereales
+(4, 1), -- Redds - especias
+(4, 2); -- Redds - frutas
