@@ -1,0 +1,10 @@
+[{
+  "_id": {
+    "$oid": "666b4fda66f624666dd2bbb4"
+  },
+  "materia_prima": {
+    "malta": 5000,
+    "lúpulo": 2000,
+    "levadura": 1000
+  }
+}]

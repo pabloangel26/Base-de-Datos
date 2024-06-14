@@ -1,41 +1,39 @@
-USE fabrica_cervezas;
+CREATE DATABASE IF NOT EXISTS escuela;
 
-CREATE TABLE Categoria(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100)
-);
+USE escuela;
 
-CREATE TABLE Cerveza(
+CREATE TABLE Curso(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
-    id_categoria INT,
-    FOREIGN KEY(id_categoria) REFERENCES Categoria(id)
+    descripcion TEXT
 );
 
-CREATE TABLE Materia_Prima(
+CREATE TABLE Estudiantes(
+    id INT AUTO_INCREMENT,
+    nombre VARCHAR(100),
+    correo VARCHAR(100),
+    id_curso INT,
+    PRIMARY KEY(id),
+    FOREIGN KEY(id_curso) REFERENCES Curso(id)
+);
+
+CREATE TABLE Perfil(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    biografia VARCHAR(100),
+    id_estudiante INT,
+    FOREIGN KEY(id_estudiante) REFERENCES Estudiantes(id)
+);
+
+CREATE TABLE Profesor(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
-    descripcion VARCHAR(100)
+    departamento VARCHAR(100)
 );
 
-CREATE TABLE Cerveza_Materia_Prima(
-    id_cerveza INT,
-    id_materia_prima INT,
-    PRIMARY KEY (id_cerveza, id_materia_prima),
-    FOREIGN KEY(id_cerveza) REFERENCES Cerveza(id),
-    FOREIGN KEY(id_materia_prima) REFERENCES Materia_Prima(id)
+CREATE TABLE Curso_asignado(
+    id_curso INT,
+    id_profesor INT,
+    PRIMARY KEY(id_curso, id_profesor),
+    FOREIGN KEY(id_curso) REFERENCES Curso(id),
+    FOREIGN KEY(id_profesor) REFERENCES Profesor(id)
 );
-
-CREATE TABLE Tipo(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100)
-);
-
-CREATE TABLE Categoria_Tipo(
-    id_categoria INT,
-    id_tipo INT,
-    PRIMARY KEY(id_categoria, id_tipo),
-    FOREIGN KEY(id_categoria) REFERENCES Categoria(id),
-    FOREIGN KEY(id_tipo) REFERENCES Tipo(id)
-);
-

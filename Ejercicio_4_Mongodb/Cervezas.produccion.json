@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "666a6cacd9d65a273cd75361"
+  },
+  "cerveza": "Lager",
+  "cantidad_producida": 1000,
+  "materia_prima": [
+    {
+      "ingrediente": "malta",
+      "cantidad": 500,
+      "unidad": "kg"
+    },
+    {
+      "ingrediente": "lúpulo",
+      "cantidad": 200,
+      "unidad": "kg"
+    },
+    {
+      "ingrediente": "levadura",
+      "cantidad": 10,
+      "unidad": "kg"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "666a7162d9d65a273cd75362"
+  },
+  "cerveza": "Ales",
+  "cantidad_producida": 800,
+  "materia_prima": [
+    {
+      "ingrediente": "malta",
+      "cantidad": 400,
+      "unidad": "kg"
+    },
+    {
+      "ingrediente": "lúpulo",
+      "cantidad": 150,
+      "unidad": "kg"
+    },
+    {
+      "ingrediente": "levadura",
+      "cantidad": 8,
+      "unidad": "kg"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "666a71d4d9d65a273cd75363"
+  },
+  "cerveza": "Anyel",
+  "cantidad_producida": 500,
+  "materia_prima": [
+    {
+      "ingrediente": "malta",
+      "cantidad": 300,
+      "unidad": "kg"
+    },
+    {
+      "ingrediente": "lúpulo",
+      "cantidad": 100,
+      "unidad": "kg"
+    },
+    {
+      "ingrediente": "levadura",
+      "cantidad": 6,
+      "unidad": "kg"
+    }
+  ]
+}]

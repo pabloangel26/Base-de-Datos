@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "666a726bd9d65a273cd75367"
+  },
+  "cerveza": "Lager",
+  "cantidad_vendida": 200,
+  "precio_unitario": 13.4,
+  "total": 2680
+},
+{
+  "_id": {
+    "$oid": "666a72ead9d65a273cd75368"
+  },
+  "cerveza": "Ales",
+  "cantidad_vendida": 150,
+  "precio_unitario": 12.5,
+  "total": 1875
+},
+{
+  "_id": {
+    "$oid": "666a731cd9d65a273cd75369"
+  },
+  "cerveza": "Anyel",
+  "cantidad_vendida": 100,
+  "precio_unitario": 15,
+  "total": 1500
+}]
